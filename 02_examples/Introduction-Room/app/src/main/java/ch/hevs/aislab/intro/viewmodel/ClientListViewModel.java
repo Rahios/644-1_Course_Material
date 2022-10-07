@@ -14,7 +14,8 @@ import androidx.lifecycle.ViewModelProvider;
 import ch.hevs.aislab.intro.database.entity.ClientEntity;
 import ch.hevs.aislab.intro.database.repository.ClientRepository;
 
-public class ClientListViewModel extends AndroidViewModel {
+public class ClientListViewModel extends AndroidViewModel 
+{
 
     private ClientRepository repository;
 
@@ -23,7 +24,8 @@ public class ClientListViewModel extends AndroidViewModel {
     // MediatorLiveData can observe other LiveData objects and react on their emissions.
     private final MediatorLiveData<List<ClientEntity>> observableClients;
 
-    public ClientListViewModel(@NonNull Application application, ClientRepository clientRepository) {
+    public ClientListViewModel(@NonNull Application application, ClientRepository clientRepository) 
+    {
         super(application);
 
         repository = clientRepository;
@@ -43,7 +45,8 @@ public class ClientListViewModel extends AndroidViewModel {
     /**
      * A creator is used to inject the account id into the ViewModel
      */
-    public static class Factory extends ViewModelProvider.NewInstanceFactory {
+    public static class Factory extends ViewModelProvider.NewInstanceFactory  // FACTORY
+    {
 
         @NonNull
         private final Application application;
