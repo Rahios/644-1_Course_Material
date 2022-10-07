@@ -21,6 +21,7 @@ public class ClientEntity {
     @ColumnInfo(name = "last_name")
     private String lastName;
 
+    // On doit déclarer le constructeur pour eviter qu'il le fasse lui même
     @Ignore
     public ClientEntity() {
     }
