@@ -13,7 +13,8 @@ import ch.hevs.aislab.intro.database.entity.ClientEntity;
 import ch.hevs.aislab.intro.database.repository.ClientRepository;
 import ch.hevs.aislab.intro.util.OnAsyncEventListener;
 
-public class ClientViewModel extends AndroidViewModel {
+public class ClientViewModel extends AndroidViewModel 
+{
 
     private ClientRepository repository;
 
@@ -23,7 +24,8 @@ public class ClientViewModel extends AndroidViewModel {
     private final MediatorLiveData<ClientEntity> observableClient;
 
     public ClientViewModel(@NonNull Application application,
-                           final String email, ClientRepository clientRepository) {
+                           final String email, ClientRepository clientRepository) 
+    {
         super(application);
 
         repository = clientRepository;
