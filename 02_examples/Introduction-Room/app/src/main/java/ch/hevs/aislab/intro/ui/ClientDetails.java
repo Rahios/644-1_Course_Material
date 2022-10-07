@@ -51,12 +51,14 @@ public class ClientDetails extends AppCompatActivity {
         ClientViewModel.Factory factory = new ClientViewModel.Factory(getApplication(), clientEmail);
         viewModel = ViewModelProviders.of(this, factory).get(ClientViewModel.class);
         viewModel.getClient().observe(this, clientEntity -> {
-            if (clientEntity != null) {
+            if (clientEntity != null)           // Si la Db est NULL, on ne passera jamais ici ?
+            {
                 client = clientEntity;
                 updateContent();
             }
         });
 
+        // Si le mail existe pas, on le crée
         if (clientEmail != null) {
             setTitle(R.string.title_activity_details);
         } else {
@@ -65,6 +67,7 @@ public class ClientDetails extends AppCompatActivity {
         }
     }
 
+    // Mettre en place les différents bouttons
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
@@ -82,7 +85,9 @@ public class ClientDetails extends AppCompatActivity {
         }
         return true;
     }
-
+    
+    
+    // Quand on selectionne un boutton
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == EDIT_CLIENT) {
