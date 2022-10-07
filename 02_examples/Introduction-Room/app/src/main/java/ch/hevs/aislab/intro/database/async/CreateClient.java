@@ -11,7 +11,7 @@ public class CreateClient extends AsyncTask<ClientEntity, Void, Void> {
 
     private AppDatabase database;
     private OnAsyncEventListener callback;
-    private Exception exception;
+    private Exception exception;        // On garde l'exception en variable !!!
 
     public CreateClient(Context context, OnAsyncEventListener callback) {
         database = AppDatabase.getInstance(context);
@@ -19,7 +19,8 @@ public class CreateClient extends AsyncTask<ClientEntity, Void, Void> {
     }
 
     @Override
-    protected Void doInBackground(ClientEntity... params) {
+    protected Void doInBackground(ClientEntity... params)  // On peut reçevoir plusieurs paramètres, une liste de paramètres
+    {
         try {
             for (ClientEntity client : params)
                 database.clientDao().insert(client);
@@ -30,12 +31,13 @@ public class CreateClient extends AsyncTask<ClientEntity, Void, Void> {
     }
 
     @Override
-    protected void onPostExecute(Void aVoid) {
+    protected void onPostExecute(Void aVoid) 
+    {
         if (callback != null) {
             if (exception == null) {
-                callback.onSuccess();
+                callback.onSuccess();       // Dans les classes plus haut. Afficher un message de succès genre "Client bien ajouté"
             } else {
-                callback.onFailure(exception);
+                callback.onFailure(exception); // Dans les classes plus haut. Afficher un message de error genre "Pas de réseau"
             }
         }
     }
