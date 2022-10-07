@@ -45,14 +45,18 @@ public abstract class AppDatabase extends RoomDatabase {
      * creates a new instance of the database.
      * The SQLite database is only created when it's accessed for the first time.
      */
-    private static AppDatabase buildDatabase(final Context appContext) {
+    private static AppDatabase buildDatabase(final Context appContext) 
+    {
         Log.i(TAG, "Database will be initialized.");
         return Room.databaseBuilder(appContext, AppDatabase.class, DATABASE_NAME)
-                .addCallback(new Callback() {
+                .addCallback(new Callback() 
+                {
                     @Override
-                    public void onCreate(@NonNull SupportSQLiteDatabase db) {
+                    public void onCreate(@NonNull SupportSQLiteDatabase db) 
+                    {
                         super.onCreate(db);
-                        Executors.newSingleThreadExecutor().execute(() -> {
+                        Executors.newSingleThreadExecutor().execute(() -> 
+                        {
                             AppDatabase database = AppDatabase.getInstance(appContext);
                             DatabaseInitializer.populateDatabase(database);
                             // notify that the database was created and it's ready to be used
