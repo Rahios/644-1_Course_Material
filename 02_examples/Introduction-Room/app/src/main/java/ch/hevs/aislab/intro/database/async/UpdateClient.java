@@ -18,6 +18,7 @@ public class UpdateClient extends AsyncTask<ClientEntity, Void, Void> {
         this.callback = callback;
     }
 
+    // TEST GITHUB
     @Override
     protected Void doInBackground(ClientEntity... params) {
         try {
